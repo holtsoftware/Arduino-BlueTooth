@@ -1,4 +1,5 @@
 #include "Main.h"
+#include <SoftwareSerial.h>
 Main mainClass;
 
 void setup()
