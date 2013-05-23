@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 #include "CommandArgs.h"
+#include "ICommandReceived.h"
 
 class CommandProcesser
 {
@@ -10,12 +11,15 @@ public:
 	CommandProcesser();
 
 	void Process();
-	void SetCommandRecived(void (*callback)(CommandArgs));
+	void SetCommandReceived(ICommandReceived *);
+
+protected:
+	void SendCommand();
 
 private:
 	SoftwareSerial ss;
-	void (*commandRecivedCallBack)(CommandArgs);
-	byte buffer[9];
+	ICommandReceived* received;
+	byte buffer[13];
 	int index;
 };
 

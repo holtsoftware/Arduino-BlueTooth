@@ -1,8 +1,10 @@
+#ifndef _VSARDUINO_H_
+#define _VSARDUINO_H_
 //Board = Arduino Uno
-#define ARDUINO 102
 #define __AVR_ATmega328P__
-#define F_CPU 16000000L
+#define ARDUINO 104
 #define __AVR__
+#define F_CPU 16000000L
 #define __cplusplus
 #define __attribute__(x)
 #define __inline__
@@ -22,13 +24,14 @@
 #define NOINLINE __attribute__((noinline))
 
 typedef unsigned char byte;
-extern "C" void __cxa_pure_virtual() {}
+extern "C" void __cxa_pure_virtual() {;}
 
 LedCommand GetLedCommand(byte bytes[]);
-//already defined in arduno.h
-//already defined in arduno.h
+//
+//
 
 #include "C:\arduino\hardware\arduino\variants\standard\pins_arduino.h" 
 #include "C:\arduino\hardware\arduino\cores\arduino\arduino.h"
 #include "S:\github\Arduino-BlueTooth\Code\Arduino\BlueToothLed\BlueToothLed.ino"
 #include "S:\github\Arduino-BlueTooth\Code\Arduino\BlueToothLed\LedCommand.h"
+#endif

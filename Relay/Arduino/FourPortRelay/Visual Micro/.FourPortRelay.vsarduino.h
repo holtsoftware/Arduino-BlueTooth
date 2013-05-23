@@ -2,7 +2,7 @@
 #define _VSARDUINO_H_
 //Board = Arduino Uno
 #define __AVR_ATmega328P__
-#define ARDUINO 104
+#define ARDUINO 105
 #define __AVR__
 #define F_CPU 16000000L
 #define __cplusplus
@@ -36,6 +36,12 @@ extern "C" void __cxa_pure_virtual() {;}
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\CommandArgs.h"
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\CommandProcesser.cpp"
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\CommandProcesser.h"
+#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Common.h"
+#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\ICommandReceived.h"
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Main.cpp"
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Main.h"
+#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\RGBLed.cpp"
+#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\RGBLed.h"
+#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Relay.cpp"
+#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Relay.h"
 #endif

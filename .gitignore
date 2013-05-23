@@ -88,6 +88,10 @@ csx
 # Windows Store app package directory
 AppPackages/
 
+#Eagle files
+*.b#*
+*.s#*
+
 # Others
 [Bb]in
 [Oo]bj

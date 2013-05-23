@@ -9,7 +9,7 @@ class CommandArgs
 {
 public:
 	CommandArgs();
-	CommandArgs(Major, int, int);
+	CommandArgs(Major, int, int, int);
 
 	Major Get_Major();
 	void Set_Major(Major);
@@ -17,11 +17,15 @@ public:
 	int Get_Minor();
 	void Set_Minor(int);
 
-	int Get_Value();
-	void Set_Value(int);
+	int Get_Value1();
+	void Set_Value1(int);
+
+	int Get_Value2();
+	void Set_Value2(int);
 private:
 	Major majorCommand;
 	int minorCommand;
-	int value;
+	int value1;
+	int value2;
 };
 #endif

@@ -44,8 +44,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\arduino\hardware\arduino\cores\arduino;C:\arduino\hardware\arduino\variants\standard;c:\arduino\hardware\tools\avr\avr\include\;c:\arduino\hardware\tools\avr\avr\include\avr\;c:\arduino\hardware\tools\avr\avr\;c:\arduino\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>C:\Users\adam.holt\Documents\Arduino\FourPortRelay\Visual Micro\.FourPortRelay.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>C:\arduino\hardware\arduino\cores\arduino;C:\arduino\hardware\arduino\variants\standard;C:\arduino\libraries\SoftwareSerial;C:\arduino\libraries\SoftwareSerial\utility;c:\arduino\hardware\tools\avr\avr\include\;c:\arduino\hardware\tools\avr\avr\include\avr\;c:\arduino\hardware\tools\avr\avr\;c:\arduino\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Visual Micro\.FourPortRelay.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
       <PreprocessorDefinitions>__AVR_ATmega328P__;ARDUINO=104;__AVR__;F_CPU=16000000L;__cplusplus;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -73,7 +73,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CommandArgs.h" />
+    <ClInclude Include="CommandProcesser.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="ICommandReceived.h" />
+    <ClInclude Include="Main.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="Visual Micro\.FourPortRelay.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CommandArgs.cpp" />
+    <ClCompile Include="CommandProcesser.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
