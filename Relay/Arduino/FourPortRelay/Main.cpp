@@ -17,5 +17,10 @@ void Main::Loop(void)
 
 void Main::OnCommandReceived(CommandArgs args)
 {
-
+	if(args.Get_Major() == Get)
+	{
+		CommandArgs toSend;
+		toSend.Set_Major(Set);
+		toSend.Set_Minor(RELAY);
+	}
 }
