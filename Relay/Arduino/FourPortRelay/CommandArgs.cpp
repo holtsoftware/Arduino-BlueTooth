@@ -4,7 +4,7 @@ CommandArgs::CommandArgs()
 {
 }
 
-CommandArgs::CommandArgs(Major major, int minor, int value1, int value2)
+CommandArgs::CommandArgs(Major major, Int16 minor, Int16 value1, Int16 value2)
 {
 	this->majorCommand = major;
 	this->minorCommand = minor;
@@ -22,32 +22,32 @@ void CommandArgs::Set_Major(Major major)
 	this->majorCommand = major;
 }
 
-int CommandArgs::Get_Minor()
+Int16 CommandArgs::Get_Minor()
 {
 	return this->minorCommand;
 }
 
-void CommandArgs::Set_Minor(int minor)
+void CommandArgs::Set_Minor(Int16 minor)
 {
 	this->minorCommand = minor;
 }
 
-int CommandArgs::Get_Value1()
+Int16 CommandArgs::Get_Value1()
 {
 	return this->value1;
 }
 
-void CommandArgs::Set_Value1(int value)
+void CommandArgs::Set_Value1(Int16 value)
 {
 	this->value1 = value;
 }
 
-int CommandArgs::Get_Value2()
+Int16 CommandArgs::Get_Value2()
 {
 	return this->value2;
 }
 
-void CommandArgs::Set_Value2(int value)
+void CommandArgs::Set_Value2(Int16 value)
 {
 	this->value2 = value;
 }

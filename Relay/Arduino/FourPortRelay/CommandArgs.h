@@ -1,7 +1,7 @@
 #ifndef _COMMANDARGS_H_
 #define _COMMANDARGS_H_
 
-#define RESETBYTE 255
+#include "Common.h"
 
 enum Major { Get = 0, Set = 1 };
 
@@ -9,23 +9,23 @@ class CommandArgs
 {
 public:
 	CommandArgs();
-	CommandArgs(Major, int, int, int);
+	CommandArgs(Major, Int16, Int16, Int16);
 
 	Major Get_Major();
 	void Set_Major(Major);
 
-	int Get_Minor();
-	void Set_Minor(int);
+	Int16 Get_Minor();
+	void Set_Minor(Int16);
 
-	int Get_Value1();
-	void Set_Value1(int);
+	Int16 Get_Value1();
+	void Set_Value1(Int16);
 
-	int Get_Value2();
-	void Set_Value2(int);
+	Int16 Get_Value2();
+	void Set_Value2(Int16);
 private:
 	Major majorCommand;
-	int minorCommand;
-	int value1;
-	int value2;
+	Int16 minorCommand;
+	Int16 value1;
+	Int16 value2;
 };
 #endif

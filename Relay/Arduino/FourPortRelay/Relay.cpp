@@ -1,10 +1,10 @@
 #include "Relay.h"
 #include <Arduino.h>
 
-#define RELAY1_PIN		6
-#define RELAY2_PIN		7
-#define RELAY3_PIN		8
-#define RELAY4_PIN		9
+#define RELAY1_PIN		5
+#define RELAY2_PIN		6
+#define RELAY3_PIN		7
+#define RELAY4_PIN		8
 
 Relay::Relay() :
 	relay1(false),

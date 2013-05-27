@@ -5,6 +5,7 @@
 #include "CommandArgs.h";
 #include "ICommandReceived.h"
 #include "Relay.h"
+#include "RGBLed.h"
 
 class Main : public ICommandReceived
 {
@@ -18,6 +19,7 @@ public:
 private:
 	CommandProcesser processer;
 	Relay relay;
+	RGBLed led;
 };
 
 #endif

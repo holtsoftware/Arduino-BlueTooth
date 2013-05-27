@@ -1,6 +1,7 @@
 #include "Main.h"
 
-Main::Main() : relay()
+Main::Main() : relay(),
+	led(11, 9, 10)
 {
 }
 

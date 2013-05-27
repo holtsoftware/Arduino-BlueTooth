@@ -32,6 +32,8 @@ extern "C" void __cxa_pure_virtual() {;}
 #include "C:\arduino\hardware\arduino\variants\standard\pins_arduino.h" 
 #include "C:\arduino\hardware\arduino\cores\arduino\arduino.h"
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\FourPortRelay.ino"
+#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\BitConverter.cpp"
+#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\BitConverter.h"
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\CommandArgs.cpp"
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\CommandArgs.h"
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\CommandProcesser.cpp"

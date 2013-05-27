@@ -1,6 +1,8 @@
 #include "CommandProcesser.h"
 #include "CommandArgs.h"
 #include <string.h>
+#include "Common.h"
+#include "BitConverter.h"
 
 CommandProcesser::CommandProcesser() : ss(2, 3), index(0)
 {
@@ -18,37 +20,72 @@ void CommandProcesser::Process()
 		byte b = ss.read();
 		buffer[index] = b;
 		index ++;
-		if(index >= 13)
+		if(index >= 8)
 		{
-			SendCommand();
+			OnCommandRecived();
 			index = 0;
 		}
 	}
 }
 
-void CommandProcesser::SendCommand()
+void CommandProcesser::SendCommand(CommandArgs args)
+{
+	ss.write((byte)0);
+	ss.write((byte)args.Get_Major());
+
+	byte* bytes = System::BitConverter::GetBytes(args.Get_Minor());
+
+	sendIntBytes(bytes);
+
+	bytes = System::BitConverter::GetBytes(args.Get_Value1());
+
+	sendIntBytes(bytes);
+
+	bytes = System::BitConverter::GetBytes(args.Get_Value2());
+
+	sendIntBytes(bytes);
+
+}
+
+void CommandProcesser::OnCommandRecived()
 {
 	CommandArgs args;
-	if(buffer[0] == 0)
+	if(buffer[1] == 0)
 	{
 		args.Set_Major(Get);
 	}
-	else if(buffer[0] == 1)
+	else if(buffer[1] == 1)
 	{
 		args.Set_Major(Set);
 	}
 
-	int minor = ((int)buffer[1]<<24)|((int)buffer[2]<<16)|((int)buffer[3] << 8)|(int)buffer[4];
+	byte* ptr = buffer;
+
+	Int16 minor = System::BitConverter::ToInt16(buffer, (Int16)2);
 	args.Set_Minor(minor);
 
-	int value = ((int)buffer[5]<<24)|((int)buffer[6]<<16)|((int)buffer[7] << 8)|((int)buffer[8]);
+	Int16 value = System::BitConverter::ToInt16(buffer, 4);
 	args.Set_Value1(value);
 
-	value = ((int)buffer[9]<<24)|((int)buffer[10]<<16)|((int)buffer[11] << 8)| ((int)buffer[12]);
+	value = System::BitConverter::ToInt16(buffer, 6);
 	args.Set_Value2(value);
 
 	if(this->received)
 	{
 		this->received->OnCommandReceived(args);
+	}
+}
+
+void CommandProcesser::sendIntBytes(byte* arr)
+{
+	if(arr != NULL && sizeof(arr) == 4)
+	{
+		ss.write(arr[0]);
+		ss.write(arr[1]);
+	}
+	else
+	{
+		ss.write((byte)0);
+		ss.write((byte)0);
 	}
 }

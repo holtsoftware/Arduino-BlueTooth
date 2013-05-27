@@ -13,13 +13,16 @@ public:
 	void Process();
 	void SetCommandReceived(ICommandReceived *);
 
+	void SendCommand(CommandArgs);
+
 protected:
-	void SendCommand();
+	void OnCommandRecived();
 
 private:
+	void sendIntBytes(byte*);
 	SoftwareSerial ss;
 	ICommandReceived* received;
-	byte buffer[13];
+	byte buffer[8];
 	int index;
 };
 

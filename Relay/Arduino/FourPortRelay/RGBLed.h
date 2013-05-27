@@ -1,15 +1,15 @@
 #ifndef _RGBLED_H_
 #define _RGBLED_H_
 
-#include <Arduino.h>
+#include "Common.h"
 
 class RGBLed
 {
 public:
-	RGBLed(uint8_t redPin, uint8_t greenPin, uint8_t bluePin);
+	RGBLed(byte redPin, byte greenPin, byte bluePin);
 
-	void Set_Value(int value);
-	int Get_Value();
+	void Set_Value(Int32 value);
+	Int32 Get_Value();
 
 	byte Get_Red();
 	void Set_Red(byte value);
@@ -24,8 +24,8 @@ private:
 	byte red;
 	byte green;
 	byte blue;
-	uint8_t redPin;
-	uint8_t greenPin;
-	uint8_t bluePin;
+	byte redPin;
+	byte greenPin;
+	byte bluePin;
 };
 #endif

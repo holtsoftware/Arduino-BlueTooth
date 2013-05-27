@@ -1,7 +1,7 @@
 #include "RGBLed.h"
 #include <Arduino.h>
 
-RGBLed::RGBLed(uint8_t redPin, uint8_t greenPin, uint8_t bluePin) :
+RGBLed::RGBLed(byte redPin, byte greenPin, byte bluePin) :
 	red(0),
 	green(0),
 	blue(0)
@@ -18,7 +18,7 @@ RGBLed::RGBLed(uint8_t redPin, uint8_t greenPin, uint8_t bluePin) :
 	analogWrite(bluePin, 0);
 }
 
-void RGBLed::Set_Value(int value)
+void RGBLed::Set_Value(Int32 value)
 {
 	this->red = (byte)((value & (255 << 16)) >> 16);
 	this->green = (byte)((value & (255 << 8)) >> 8);
@@ -29,9 +29,9 @@ void RGBLed::Set_Value(int value)
 	analogWrite(bluePin, blue);
 }
 
-int RGBLed::Get_Value()
+Int32 RGBLed::Get_Value()
 {
-	return (this->red << 16) | (this->green << 8) | this->blue;
+	return (Int32)(this->red << 16) | (Int32)(this->green << 8) | (Int32)this->blue;
 }
 
 byte RGBLed::Get_Red()
