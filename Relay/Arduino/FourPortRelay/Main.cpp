@@ -17,10 +17,15 @@ void Main::Loop(void)
 
 void Main::OnCommandReceived(CommandArgs args)
 {
+	Serial.print("Major ");
+	Serial.print(args.Get_Major());
+	Serial.print(" Minor ");
+	Serial.print(args.Get_Minor());
+	Serial.print(" Value1 ");
+	Serial.print(args.Get_Value1());
+	Serial.print(" Value2 ");
+	Serial.println(args.Get_Value2());
 	if(args.Get_Major() == Get)
 	{
-		CommandArgs toSend;
-		toSend.Set_Major(Set);
-		toSend.Set_Minor(RELAY);
 	}
 }

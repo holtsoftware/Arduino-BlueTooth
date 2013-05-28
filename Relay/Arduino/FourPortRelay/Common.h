@@ -1,8 +1,8 @@
 #ifndef _COMMON_H_
 #define _COMMON_H_
 
-#define RELAY		1
-#define LED			2
+#define MINOR_RELAY		1
+#define MINOR_LED		2
 
 #ifdef ARDUINO
 #include <Arduino.h>

@@ -1,10 +1,10 @@
 #include "Relay.h"
 #include <Arduino.h>
 
-#define RELAY1_PIN		5
-#define RELAY2_PIN		6
-#define RELAY3_PIN		7
-#define RELAY4_PIN		8
+#define RELAY1_PIN		7
+#define RELAY2_PIN		5
+#define RELAY3_PIN		6
+#define RELAY4_PIN		4
 
 Relay::Relay() :
 	relay1(false),
@@ -16,6 +16,10 @@ Relay::Relay() :
 	pinMode(RELAY2_PIN, OUTPUT);
 	pinMode(RELAY3_PIN, OUTPUT);
 	pinMode(RELAY4_PIN, OUTPUT);
+	digitalWrite(RELAY1_PIN, HIGH);
+	digitalWrite(RELAY2_PIN, HIGH);
+	digitalWrite(RELAY3_PIN, HIGH);
+	digitalWrite(RELAY4_PIN, HIGH);
 }
 
 bool Relay::Get_Relay1()
