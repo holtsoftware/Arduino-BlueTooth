@@ -358,8 +358,8 @@ UsedLibrary="C:/Program Files (x86)/EAGLE-6.4.0/lbr/zilog.lbr"
 
 [Win_1]
 Type="Schematic Editor"
-Loc="652 321 1251 720"
-State=0
+Loc="1304 237 1903 636"
+State=2
 Number=2
 File="Relay.sch"
 View="-93.9008 21.76 113.306 140.599"
@@ -401,15 +401,16 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=91
+Views=" 1: -93.9008 21.76 113.306 140.599"
 Sheet=1
 
 [Win_2]
 Type="Control Panel"
-Loc="653 322 1252 721"
-State=1
+Loc="33 161 632 560"
+State=2
 Number=0
 
 [Desktop]
-Screen="5760 1105"
+Screen="1920 1080"
 Window="Win_1"
 Window="Win_2"
