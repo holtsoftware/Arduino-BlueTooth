@@ -1,0 +1,9 @@
+﻿<vm:DevicesViewModel
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:vm="clr-namespace:Sannel.Relay.ViewModels"
+	>
+	<vm:DevicesViewModel.Devices>
+		<vm:DeviceViewModel Name="BTArduino" Address="(00:07:85:AF:B8:8A)" ServiceName="{}{00001101-0000-1000-8000-00805f9b34fb}"/>
+	</vm:DevicesViewModel.Devices>
+</vm:DevicesViewModel>
