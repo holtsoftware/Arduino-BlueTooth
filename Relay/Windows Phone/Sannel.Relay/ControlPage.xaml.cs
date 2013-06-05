@@ -9,12 +9,16 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Windows.Networking.Sockets;
 using Sannel.Relay.ViewModels;
+using Sannel.Relay.Command;
 
 namespace Sannel.Relay
 {
 	public partial class ControlPage : PhoneApplicationPage
 	{
 		public static StreamSocket Connection = null;
+
+		private CommandViewModel commandvm;
+		private Processer processer;
 
 		
 		public ControlPage()
@@ -39,6 +43,16 @@ namespace Sannel.Relay
 				return;
 			}
 
+			processer = new Processer();
+			commandvm = new CommandViewModel();
+			commandvm.Relay = new RelayViewModel();
+			processer.CommandRecived += commandvm.Relay.OnCommandRecived;
+			commandvm.RGBLed = new RGBLedViewModel();
+			processer.CommandRecived += commandvm.RGBLed.OnCommandRecived;
+			commandvm.Relay.SendCommand += sendCommand;
+			commandvm.RGBLed.SendCommand += sendCommand;
+			DataContext = commandvm;
+
 			/*processer = new CommandProcesser(Connection);
 			vm = new ControlViewModel();
 			DataContext = vm;
@@ -48,6 +62,14 @@ namespace Sannel.Relay
 			processer.AddCommandClass(vm.LED);
 			processer.SendGetAll();*/
 
+		}
+
+		private async void sendCommand(object sender, CommandArgs args)
+		{
+			if (processer != null)
+			{
+				await processer.SendCommandAsync(args);
+			}
 		}
 	}
 }
