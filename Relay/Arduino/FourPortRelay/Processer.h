@@ -23,7 +23,7 @@ namespace Sannel
 				void ProcessInput();
 				void SendCommand(CommandArgs args);
 
-				void SetCommandReceived(ICommandReceived* receiver);
+				void Set_CommandReceived(ICommandReceived* receiver);
 
 			private:
 				SoftwareSerial serial;

@@ -24,9 +24,6 @@
     <ClInclude Include="Main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CommandProcesser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CommandArgs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -45,12 +42,18 @@
     <ClInclude Include="Relay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Processer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CommandProcesser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CommandArgs.cpp">
@@ -63,6 +66,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Relay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Processer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

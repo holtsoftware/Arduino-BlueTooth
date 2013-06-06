@@ -77,12 +77,14 @@
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClInclude Include="CommandArgs.h" />
-    <ClInclude Include="CommandProcesser.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="ICommandReceived.h" />
     <ClInclude Include="Main.h">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClInclude Include="CommandType.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="Processer.h" />
     <ClInclude Include="Relay.h">
       <FileType>CppCode</FileType>
     </ClInclude>
@@ -94,8 +96,8 @@
   <ItemGroup>
     <ClCompile Include="BitConverter.cpp" />
     <ClCompile Include="CommandArgs.cpp" />
-    <ClCompile Include="CommandProcesser.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Processer.cpp" />
     <ClCompile Include="Relay.cpp" />
     <ClCompile Include="RGBLed.cpp" />
   </ItemGroup>
