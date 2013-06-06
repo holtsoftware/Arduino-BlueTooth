@@ -2,30 +2,35 @@
 #define _COMMANDARGS_H_
 
 #include "Common.h"
+#include "CommandType.h"
+#include "Command.h"
 
-enum Major { Get = 0, Set = 1 };
-
-class CommandArgs
+namespace Sannel
 {
-public:
-	CommandArgs();
-	CommandArgs(Major, Int16, Int16, Int16);
+	namespace Relay
+	{
+		namespace Command
+		{
 
-	Major Get_Major();
-	void Set_Major(Major);
+			class CommandArgs
+			{
+			public:
+				CommandArgs();
 
-	Int16 Get_Minor();
-	void Set_Minor(Int16);
+				CommandType Get_Type();
+				void Set_Type(CommandType);
 
-	Int16 Get_Value1();
-	void Set_Value1(Int16);
+				Command Get_Command();
+				void Set_Command(Command);
 
-	Int16 Get_Value2();
-	void Set_Value2(Int16);
-private:
-	Major majorCommand;
-	Int16 minorCommand;
-	Int16 value1;
-	Int16 value2;
+				byte* Get_Value();
+				void Set_Value(byte* value);
+			private:
+				CommandType type;
+				Command command;
+				byte* value;
+			};
+		};
+	};
 };
 #endif

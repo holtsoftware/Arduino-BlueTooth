@@ -1,53 +1,37 @@
 #include "CommandArgs.h"
 
+using namespace Sannel::Relay::Command;
+
 CommandArgs::CommandArgs()
 {
 }
 
-CommandArgs::CommandArgs(Major major, Int16 minor, Int16 value1, Int16 value2)
+CommandType CommandArgs::Get_Type()
 {
-	this->majorCommand = major;
-	this->minorCommand = minor;
-	this->value1 = value1;
-	this->value2 = value2;
+	return this->type;
 }
 
-Major CommandArgs::Get_Major()
+void CommandArgs::Set_Type(CommandType type)
 {
-	return this->majorCommand;
+	this->type = type;
 }
 
-void CommandArgs::Set_Major(Major major)
+Command CommandArgs::Get_Command()
 {
-	this->majorCommand = major;
+	return this->command;
 }
 
-Int16 CommandArgs::Get_Minor()
+void CommandArgs::Set_Command(Command com)
 {
-	return this->minorCommand;
+	this->command = com;
 }
 
-void CommandArgs::Set_Minor(Int16 minor)
+byte* CommandArgs::Get_Value()
 {
-	this->minorCommand = minor;
+	return this->value;
 }
 
-Int16 CommandArgs::Get_Value1()
+void CommandArgs::Set_Value(byte* val)
 {
-	return this->value1;
-}
-
-void CommandArgs::Set_Value1(Int16 value)
-{
-	this->value1 = value;
-}
-
-Int16 CommandArgs::Get_Value2()
-{
-	return this->value2;
-}
-
-void CommandArgs::Set_Value2(Int16 value)
-{
-	this->value2 = value;
+	this->value = val;
 }

@@ -1,6 +1,6 @@
 #include "Main.h"
 #include <SoftwareSerial.h>
-Main mainClass;
+Sannel::Relay::Main mainClass;
 
 void setup()
 {

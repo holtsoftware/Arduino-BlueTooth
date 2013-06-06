@@ -3,11 +3,19 @@
 
 #include "Common.h"
 #include "CommandArgs.h"
-
-class ICommandReceived
+namespace Sannel
 {
-public:
-	virtual ~ICommandReceived() {}
-	virtual void OnCommandReceived(CommandArgs) = 0;
+	namespace Relay
+	{
+		namespace Command
+		{
+			class ICommandReceived
+			{
+			public:
+				virtual ~ICommandReceived() {}
+				virtual void OnCommandReceived(CommandArgs) = 0;
+			};
+		};
+	};
 };
 #endif
