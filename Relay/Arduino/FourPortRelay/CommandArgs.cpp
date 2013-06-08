@@ -35,3 +35,13 @@ void CommandArgs::Set_Value(byte* val)
 {
 	this->value = val;
 }
+
+byte CommandArgs::Get_Length()
+{
+	return length;
+}
+
+void CommandArgs::Set_Length(byte size)
+{
+	length = size;
+}

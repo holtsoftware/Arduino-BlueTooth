@@ -62,6 +62,8 @@ void RGBLed::OnCommandReceived(CommandArgs *args)
 		values[0] = Get_Red();
 		values[1] = Get_Green();
 		values[2] = Get_Blue();
+		sendArgs.Set_Length(3);
+		sendArgs.Set_Value(values);
 		SendCommand(&sendArgs);
 	}
 	else if(args->Get_Type() == Set && args->Get_Command() == RGBLedCommand)
@@ -69,7 +71,7 @@ void RGBLed::OnCommandReceived(CommandArgs *args)
 		byte* values = args->Get_Value();
 		if(values != null)
 		{
-			if(sizeof(values) == 3)
+			if(args->Get_Length() == 3)
 			{
 				Set_Red(values[0]);
 				Set_Green(values[1]);

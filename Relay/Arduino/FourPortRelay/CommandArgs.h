@@ -25,10 +25,13 @@ namespace Sannel
 
 				byte* Get_Value();
 				void Set_Value(byte* value);
+				byte Get_Length();
+				void Set_Length(byte);
 			private:
 				CommandType type;
 				Command command;
 				byte* value;
+				byte length;
 			};
 		};
 	};

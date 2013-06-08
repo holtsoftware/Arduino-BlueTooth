@@ -31,7 +31,7 @@ namespace Sannel
 				static byte packetBuffer[255];
 				static byte valueBuffer[243];
 
-				static byte index;
+				Int16 index;
 				byte length;
 				byte type;
 				byte command;

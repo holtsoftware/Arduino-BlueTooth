@@ -34,7 +34,7 @@ bool Relay4Port::Get_Relay1()
 void Relay4Port::Set_Relay1(bool on)
 {
 	relay1 = on;
-	digitalWrite(RELAY1_PIN, (on)?HIGH:LOW);
+	digitalWrite(RELAY1_PIN, (on)?LOW:HIGH);
 }
 
 bool Relay4Port::Get_Relay2()
@@ -45,7 +45,7 @@ bool Relay4Port::Get_Relay2()
 void Relay4Port::Set_Relay2(bool on)
 {
 	relay2 = on;
-	digitalWrite(RELAY2_PIN, (on)?HIGH:LOW);
+	digitalWrite(RELAY2_PIN, (on)?LOW:HIGH);
 }
 
 bool Relay4Port::Get_Relay3()
@@ -56,7 +56,7 @@ bool Relay4Port::Get_Relay3()
 void Relay4Port::Set_Relay3(bool on)
 {
 	relay3 = on;
-	digitalWrite(RELAY3_PIN, (on)?HIGH:LOW);
+	digitalWrite(RELAY3_PIN, (on)?LOW:HIGH);
 }
 
 bool Relay4Port::Get_Relay4()
@@ -67,7 +67,7 @@ bool Relay4Port::Get_Relay4()
 void Relay4Port::Set_Relay4(bool on)
 {
 	relay4 = on;
-	digitalWrite(RELAY4_PIN, (on)?HIGH:LOW);
+	digitalWrite(RELAY4_PIN, (on)?LOW:HIGH);
 }
 
 void Relay4Port::OnCommandReceived(CommandArgs* args)
@@ -77,6 +77,7 @@ void Relay4Port::OnCommandReceived(CommandArgs* args)
 		CommandArgs sendArgs;
 		sendArgs.Set_Type(Set);
 		sendArgs.Set_Command(RelayCommand);
+		sendArgs.Set_Length(1);
 		byte value[1];
 		value[0] = (1 << 4) | Get_Relay1();
 		sendArgs.Set_Value(value);
@@ -95,7 +96,7 @@ void Relay4Port::OnCommandReceived(CommandArgs* args)
 		byte* value = args->Get_Value();
 		if(value != null)
 		{
-			if(sizeof(value) == 1)
+			if(args->Get_Length() == 1)
 			{
 				byte relay = value[0] >> 4;
 				byte onOff = value[0] & 1;
@@ -106,15 +107,15 @@ void Relay4Port::OnCommandReceived(CommandArgs* args)
 					break;
 
 				case 2:
-					Set_Relay2(onOff == 2);
+					Set_Relay2(onOff == 1);
 					break;
 
 				case 3:
-					Set_Relay3(onOff == 3);
+					Set_Relay3(onOff == 1);
 					break;
 
 				case 4:
-					Set_Relay4(onOff == 4);
+					Set_Relay4(onOff == 1);
 					break;
 
 				default:

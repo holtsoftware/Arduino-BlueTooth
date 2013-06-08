@@ -12,8 +12,6 @@ void setup()
 
 void loop()
 {
-	Serial.print("loop ");
-	Serial.println(millis());
 	mainClass.Loop();
 	delay(500);
 }

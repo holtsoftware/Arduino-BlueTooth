@@ -4,10 +4,10 @@ using namespace Sannel::Relay::Command;
 
 byte Processer::packetBuffer[255];
 byte Processer::valueBuffer[243];
-byte Processer::index = -1;
 
-Processer::Processer() : serial(2, 3)
+Processer::Processer() : serial(2,3), index(-1)
 {
+	serial.begin(57600);
 }
 
 Processer::~Processer()
@@ -45,29 +45,32 @@ void Processer::processPacket()
 	while(serial.available())
 	{
 		val = serial.read();
-		
+
 		packetBuffer[this->index] = (byte)val;
-		if(index > 0 && index == (length - 9))
+		if(index > 0 && length > 9 && index == (length - 1))
 		{
 			if(packetBuffer[index] == crc)
 			{
-				void* value = &valueBuffer[(243 - (length - 10))];
+				void* value = &valueBuffer[0];
 				const void* packetStart = &packetBuffer[9];
 				memcpy(value, packetStart, length - 10);
 
 				CommandArgs args;
 				args.Set_Type((CommandType)type);
 				args.Set_Command((Command)command);
-				args.Set_Value((byte*)value);
+				args.Set_Value(valueBuffer);
+				args.Set_Length(length - 10);
 
 				this->receiver->OnCommandReceived(&args);
 				index = -1;
+				length = 0;
 				return;
 			}
 			else
 			{
 				// Invalid crc throw out the packet.
 				index = -1;
+				length = 0;
 				return;
 			}
 		}
@@ -86,10 +89,16 @@ void Processer::processPacket()
 			{
 				command = packetBuffer[index];
 			}
+			index++;
+			if(index >= 253)
+			{
+				index = -1;
+				length = 0;
+				return;
+			}
 		}
-		
 
-		index++;
+
 	}
 }
 
@@ -101,7 +110,7 @@ void Processer::Set_CommandReceived(ICommandReceived* receiver)
 // [1 byte (start) (254)][1 byte (Length in bytes max 253)][4 bytes (CommandType)][4 bytes (Command)][0-243 bytes (Data)][1 byte (CRC)][1 byte (stop) (255)]
 void Processer::SendCommand(CommandArgs* args)
 {
-	byte valueLength = sizeof(args->Get_Value());
+	byte valueLength = args->Get_Length();
 	if(valueLength > 243)
 	{
 		return; // not currently supporting multiple packets so dump this package as invalid.
@@ -146,4 +155,5 @@ void Processer::SendCommand(CommandArgs* args)
 
 	serial.write(crc);
 	serial.write(EndByte);
+	serial.flush();
 }

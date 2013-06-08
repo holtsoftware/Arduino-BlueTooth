@@ -7,9 +7,9 @@
 
 using namespace Sannel::Relay::Command;
 
-#define REDPIN		1
-#define GREENPIN	1
-#define BLUEPIN		1
+#define REDPIN		11
+#define GREENPIN	9
+#define BLUEPIN		10
 
 namespace Sannel
 {
