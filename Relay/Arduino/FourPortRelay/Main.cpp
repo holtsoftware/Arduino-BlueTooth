@@ -1,17 +1,32 @@
 #include "Main.h"
 
 using namespace Sannel::Relay;
+using namespace Sannel::Relay::Command;
 
-Main::Main()
+Main::Main() :
+	relay(this),
+	led(this)
 {
+	processer.Set_CommandReceived(this);
 }
 
 void Main::Init(void)
 {
-	//this->processer.SetCommandReceived(this);
+	
 }
 
 void Main::Loop(void)
 {
-	//this->processer.Process();
+	processer.ProcessInput();
+}
+
+void Main::OnCommandReceived(CommandArgs* args)
+{
+	relay.OnCommandReceived(args);
+	led.OnCommandReceived(args);
+}
+
+void Main::SendCommand(CommandArgs* args)
+{
+	processer.SendCommand(args);
 }

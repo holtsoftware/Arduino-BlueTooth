@@ -10,8 +10,9 @@ namespace Sannel
 			enum Command
 			{
 				NoCommand = 0,
-				Relay = 1,
-				RGBLed = 2
+				All = 1,
+				RelayCommand = 2,
+				RGBLedCommand = 3
 			};
 		};
 	};

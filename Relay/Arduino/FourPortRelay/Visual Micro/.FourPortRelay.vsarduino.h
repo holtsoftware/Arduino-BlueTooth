@@ -46,6 +46,6 @@ extern "C" void __cxa_pure_virtual() {;}
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Processer.h"
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\RGBLed.cpp"
 #include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\RGBLed.h"
-#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Relay.cpp"
-#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Relay.h"
+#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Relay4Port.cpp"
+#include "S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Relay4Port.h"
 #endif

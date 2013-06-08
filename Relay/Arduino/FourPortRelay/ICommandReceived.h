@@ -12,8 +12,9 @@ namespace Sannel
 			class ICommandReceived
 			{
 			public:
-				virtual ~ICommandReceived() {}
-				virtual void OnCommandReceived(CommandArgs) = 0;
+				virtual ~ICommandReceived() {};
+				virtual void SendCommand(CommandArgs*) = 0;
+				virtual void OnCommandReceived(CommandArgs*) = 0;
 			};
 		};
 	};

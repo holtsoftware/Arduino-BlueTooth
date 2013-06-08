@@ -79,13 +79,13 @@
     <ClInclude Include="CommandArgs.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="ICommandReceived.h" />
-    <ClInclude Include="Main.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
     <ClInclude Include="CommandType.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Processer.h" />
-    <ClInclude Include="Relay.h">
+    <ClInclude Include="Relay4Port.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="Main.h">
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClInclude Include="RGBLed.h">
@@ -96,9 +96,9 @@
   <ItemGroup>
     <ClCompile Include="BitConverter.cpp" />
     <ClCompile Include="CommandArgs.cpp" />
-    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Processer.cpp" />
-    <ClCompile Include="Relay.cpp" />
+    <ClCompile Include="Relay4Port.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="RGBLed.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

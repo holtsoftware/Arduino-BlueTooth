@@ -1,3 +1,4 @@
+#include "Common.h"
 #include "Main.h"
 #include <SoftwareSerial.h>
 Sannel::Relay::Main mainClass;

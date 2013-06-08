@@ -21,16 +21,21 @@ namespace Sannel
 				~Processer();
 
 				void ProcessInput();
-				void SendCommand(CommandArgs args);
+				void SendCommand(CommandArgs* args);
 
-				void Set_CommandReceived(ICommandReceived* receiver);
+				void Set_CommandReceived(ICommandReceived*);
 
 			private:
 				SoftwareSerial serial;
 				ICommandReceived* receiver;
 				static byte packetBuffer[255];
+				static byte valueBuffer[243];
 
-				Int16 index;
+				static byte index;
+				byte length;
+				byte type;
+				byte command;
+				byte crc;
 
 				void processPacket();
 			};

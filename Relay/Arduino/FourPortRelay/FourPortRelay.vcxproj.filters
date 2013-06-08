@@ -21,9 +21,6 @@
     <ClInclude Include="Visual Micro\.FourPortRelay.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CommandArgs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -39,9 +36,6 @@
     <ClInclude Include="RGBLed.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Relay.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Processer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -51,11 +45,14 @@
     <ClInclude Include="Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Relay4Port.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CommandArgs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -65,10 +62,13 @@
     <ClCompile Include="RGBLed.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Relay.cpp">
+    <ClCompile Include="Processer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Processer.cpp">
+    <ClCompile Include="Relay4Port.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,30 +2,43 @@
 #define _RGBLED_H_
 
 #include "Common.h"
+#include "ICommandReceived.h"
+#include "CommandArgs.h"
 
-class RGBLed
+using namespace Sannel::Relay::Command;
+
+#define REDPIN		1
+#define GREENPIN	1
+#define BLUEPIN		1
+
+namespace Sannel
 {
-public:
-	RGBLed(byte redPin, byte greenPin, byte bluePin);
+	namespace Relay
+	{
+		class RGBLed : public ICommandReceived
+		{
+		public:
+			RGBLed(ICommandReceived* receiver);
 
-	void Set_Value(Int32 value);
-	Int32 Get_Value();
+			byte Get_Red();
+			void Set_Red(byte value);
 
-	byte Get_Red();
-	void Set_Red(byte value);
+			byte Get_Green();
+			void Set_Green(byte value);
 
-	byte Get_Green();
-	void Set_Green(byte value);
+			byte Get_Blue();
+			void Set_Blue(byte value);
 
-	byte Get_Blue();
-	void Set_Blue(byte value);
+			void OnCommandReceived(CommandArgs *args);
 
-private:
-	byte red;
-	byte green;
-	byte blue;
-	byte redPin;
-	byte greenPin;
-	byte bluePin;
+			void SendCommand(CommandArgs * args);
+
+		private:
+			byte red;
+			byte green;
+			byte blue;
+			ICommandReceived* receiver;
+		};
+	};
 };
 #endif
