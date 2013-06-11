@@ -45,7 +45,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>C:\arduino\hardware\arduino\cores\arduino;C:\arduino\hardware\arduino\variants\standard;C:\arduino\libraries\SoftwareSerial;C:\arduino\libraries\SoftwareSerial\utility;c:\arduino\hardware\tools\avr\avr\include\;c:\arduino\hardware\tools\avr\avr\include\avr\;c:\arduino\hardware\tools\avr\avr\;c:\arduino\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>S:\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Visual Micro\.FourPortRelay.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>C:\source\github\Arduino-BlueTooth\Relay\Arduino\FourPortRelay\Visual Micro\.FourPortRelay.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
       <PreprocessorDefinitions>__AVR_ATmega328P__;ARDUINO=105;__AVR__;F_CPU=16000000L;__cplusplus;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -108,7 +108,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties arduino.upload.port="COM6" />
+      <UserProperties arduino.upload.port="COM3" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

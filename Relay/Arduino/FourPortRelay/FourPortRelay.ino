@@ -13,5 +13,4 @@ void setup()
 void loop()
 {
 	mainClass.Loop();
-	delay(500);
 }
