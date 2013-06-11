@@ -9,7 +9,8 @@ namespace Sannel.Relay.Command
 	public enum Command
 	{
 		None = 0,
-		Relay = 1,
-		RGBLed = 2
+		All = 1,
+		Relay = 2,
+		RGBLed = 3
 	}
 }

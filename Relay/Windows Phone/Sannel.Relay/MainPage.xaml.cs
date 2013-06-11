@@ -12,6 +12,9 @@ using Windows.Networking.Proximity;
 using Sannel.Relay.ViewModels;
 using System.Net.Sockets;
 using Windows.Networking.Sockets;
+using System.Diagnostics;
+using Windows.Networking;
+using System.Threading.Tasks;
 
 namespace Sannel.Relay
 {
@@ -58,6 +61,60 @@ namespace Sannel.Relay
 			}
 
 			LoadingProgressBar.Visibility = System.Windows.Visibility.Collapsed;
+			String voiceCommandName = null;
+
+			if(this.NavigationContext.QueryString != null && this.NavigationContext.QueryString.ContainsKey("voiceCommandName"))
+			{
+				voiceCommandName = NavigationContext.QueryString["voiceCommandName"];
+			}
+
+
+			if(!String.IsNullOrWhiteSpace(AppSettings.Current.DefaultAddress) && e.NavigationMode != NavigationMode.Back)
+			{
+				Dispatcher.BeginInvoke(() =>
+				{
+					ConnectingDialog.Visibility = System.Windows.Visibility.Visible;
+				});
+
+				await connectToDeviseAsync(new HostName(AppSettings.Current.DefaultAddress));
+
+				Dispatcher.BeginInvoke(() =>
+				{
+					ConnectingDialog.Visibility = System.Windows.Visibility.Collapsed;
+				});
+				if (ControlPage.Connection != null)
+				{
+					if (!String.IsNullOrWhiteSpace(voiceCommandName))
+					{
+						NavigationService.Navigate(new Uri("/ControlPage.xaml?commandName=" + Uri.EscapeDataString(voiceCommandName), UriKind.Relative));
+					}
+					else
+					{
+						NavigationService.Navigate(new Uri("/ControlPage.xaml", UriKind.Relative));
+					}
+				}
+			}
+		}
+
+		private async Task connectToDeviseAsync(HostName name)
+		{
+			if (ControlPage.Connection != null)
+			{
+				ControlPage.Connection.Dispose();
+				ControlPage.Connection = null;
+			}
+			try
+			{
+				StreamSocket socket = new StreamSocket();
+
+				await socket.ConnectAsync(name, SERVICEID);
+
+				ControlPage.Connection = socket;
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show("Unable to connect to device.", "Error", MessageBoxButton.OK);
+			}
 		}
 
 		private async void DevicesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -71,21 +128,22 @@ namespace Sannel.Relay
 						{
 							ConnectingDialog.Visibility = System.Windows.Visibility.Visible;
 						});
-					if (ControlPage.Connection != null)
-					{
-						ControlPage.Connection.Dispose();
-						ControlPage.Connection = null;
-					}
 
-					StreamSocket socket = new StreamSocket();
-					await socket.ConnectAsync(item.HostName, SERVICEID);
+					await connectToDeviseAsync(item.HostName);
 
-					ControlPage.Connection = socket;
 					Dispatcher.BeginInvoke(() =>
 						{
 							ConnectingDialog.Visibility = System.Windows.Visibility.Collapsed;
 						});
-					NavigationService.Navigate(new Uri("/ControlPage.xaml", UriKind.Relative));
+					if (ControlPage.Connection != null)
+					{
+						var results = MessageBox.Show("Make default device?", "Make Default", MessageBoxButton.OKCancel);
+						if (results == MessageBoxResult.OK)
+						{
+							AppSettings.Current.DefaultAddress = item.HostName.RawName;
+						}
+						NavigationService.Navigate(new Uri("/ControlPage.xaml", UriKind.Relative));
+					}
 
 				}
 			}
