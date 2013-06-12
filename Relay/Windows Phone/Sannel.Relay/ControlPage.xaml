@@ -40,13 +40,13 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<TextBlock>Relay 1</TextBlock>
-				<Controls:ToggleSwitch Grid.Row="1" Grid.Column="0" IsChecked="{Binding Relay1}" />
+				<Controls:ToggleSwitch Grid.Row="1" Grid.Column="0" IsChecked="{Binding Relay1, Mode=TwoWay}" />
 				<TextBlock Grid.Column="1" Grid.Row="0">Relay 2</TextBlock>
-				<Controls:ToggleSwitch Grid.Column="1" Grid.Row="1" IsChecked="{Binding Relay2}" />
+				<Controls:ToggleSwitch Grid.Column="1" Grid.Row="1" IsChecked="{Binding Relay2, Mode=TwoWay}" />
 				<TextBlock Grid.Row="2" Grid.Column="0">Relay 3</TextBlock>
-				<Controls:ToggleSwitch Grid.Row="3" Grid.Column="0" IsChecked="{Binding Relay3}" />
+				<Controls:ToggleSwitch Grid.Row="3" Grid.Column="0" IsChecked="{Binding Relay3, Mode=TwoWay}" />
 				<TextBlock Grid.Row="2" Grid.Column="1">Relay 4</TextBlock>
-				<Controls:ToggleSwitch Grid.Row="3" Grid.Column="1" IsChecked="{Binding Relay4}" />
+				<Controls:ToggleSwitch Grid.Row="3" Grid.Column="1" IsChecked="{Binding Relay4, Mode=TwoWay}" />
 			</Grid>
 			<Grid x:Name="LedPanel" DataContext="{Binding RGBLed}">
 				<Grid.RowDefinitions>
@@ -62,11 +62,11 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<TextBlock>Red</TextBlock>
-				<Slider Grid.Row="1" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Red}" />
+				<Slider Grid.Row="1" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Red, Mode=TwoWay}" />
 				<TextBlock Grid.Row="2">Green</TextBlock>
-				<Slider Grid.Row="3" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Green}" />
+				<Slider Grid.Row="3" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Green, Mode=TwoWay}" />
 				<TextBlock Grid.Row="4">Blue</TextBlock>
-				<Slider Grid.Row="5" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Blue}" />
+				<Slider Grid.Row="5" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Blue, Mode=TwoWay}" />
 			</Grid>
 		</StackPanel>
 

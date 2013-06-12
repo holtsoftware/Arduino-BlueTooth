@@ -52,6 +52,7 @@ namespace Sannel.Relay.Command
 			{
 				var bytes = GeneratePackage(args);
 				await outputStream.WriteAsync(bytes, 0, bytes.Length);
+				await outputStream.FlushAsync();
 			}
 		}
 

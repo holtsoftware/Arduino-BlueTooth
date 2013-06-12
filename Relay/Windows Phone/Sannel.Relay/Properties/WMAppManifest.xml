@@ -17,10 +17,10 @@
     <Tokens>
       <PrimaryToken TokenID="Sannel.RelayToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>Sannel.Relay</Title>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</BackgroundImageURI>
+          <Title>Lights</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>

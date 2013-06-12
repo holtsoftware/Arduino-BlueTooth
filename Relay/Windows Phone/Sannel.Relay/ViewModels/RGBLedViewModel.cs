@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Windows.UI;
+using Windows.UI.Core;
 
 namespace Sannel.Relay.ViewModels
 {
@@ -21,9 +23,13 @@ namespace Sannel.Relay.ViewModels
 					red = args.Value[0];
 					green = args.Value[1];
 					blue = args.Value[2];
-					OnPropertyChanged("Red");
-					OnPropertyChanged("Green");
-					OnPropertyChanged("Blue");
+					var dispatcher = Deployment.Current.Dispatcher;
+					dispatcher.BeginInvoke(() =>
+					{
+						OnPropertyChanged("Red");
+						OnPropertyChanged("Green");
+						OnPropertyChanged("Blue");
+					});
 				}
 			}
 		}

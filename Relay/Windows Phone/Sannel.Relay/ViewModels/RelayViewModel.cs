@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using Windows.UI.Core;
 
 namespace Sannel.Relay.ViewModels
 {
@@ -11,7 +13,7 @@ namespace Sannel.Relay.ViewModels
 	{
 		public event CommandDelegate SendCommand;
 
-		public void OnCommandRecived(object sender, CommandArgs args)
+		public async void OnCommandRecived(object sender, CommandArgs args)
 		{
 			if (args.Type == CommandType.Set && args.Command == Command.Command.Relay)
 			{
@@ -21,24 +23,39 @@ namespace Sannel.Relay.ViewModels
 					byte b = value[0];
 					int relay = (b >> 4);
 					int val = b & 1;
+					var dispatcher = Deployment.Current.Dispatcher;
 
 					switch(relay)
 					{
 						case 1:
 							relay1 = val == 1;
-							OnPropertyChanged("Relay1");
+							dispatcher.BeginInvoke(() =>
+								{
+									OnPropertyChanged("Relay1");
+								});
 							break;
 						case 2:
 							relay2 = val == 1;
-							OnPropertyChanged("Relay2");
+							dispatcher.BeginInvoke(() =>
+							{
+								OnPropertyChanged("Relay2");
+							});
 							break;
 						case 3:
 							relay3 = val == 1;
-							OnPropertyChanged("Relay3");
+							dispatcher.BeginInvoke(() =>
+							{
+								OnPropertyChanged("Relay3");
+							});
 							break;
 						case 4:
 							relay4 = val == 1;
-							OnPropertyChanged("Relay4");
+							dispatcher.BeginInvoke(() =>
+							{
+								OnPropertyChanged("Relay4");
+							});
+							break;
+						default:
 							break;
 					}
 				}
