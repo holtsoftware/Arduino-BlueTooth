@@ -30,6 +30,10 @@ namespace Sannel
 			void OnCommandReceived(CommandArgs*);
 			void SendCommand(CommandArgs*);
 
+		protected:
+			void WritePin(byte pin, bool onOff);
+			void SendSetPacket(byte relayNum, bool onOff);
+
 		private:
 			bool relay1;
 			bool relay2;

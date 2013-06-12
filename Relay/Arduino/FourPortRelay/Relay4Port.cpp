@@ -34,7 +34,8 @@ bool Relay4Port::Get_Relay1()
 void Relay4Port::Set_Relay1(bool on)
 {
 	relay1 = on;
-	digitalWrite(RELAY1_PIN, (on)?LOW:HIGH);
+	WritePin(RELAY1_PIN, on);
+	SendSetPacket(1, on);
 }
 
 bool Relay4Port::Get_Relay2()
@@ -45,7 +46,8 @@ bool Relay4Port::Get_Relay2()
 void Relay4Port::Set_Relay2(bool on)
 {
 	relay2 = on;
-	digitalWrite(RELAY2_PIN, (on)?LOW:HIGH);
+	WritePin(RELAY2_PIN, on);
+	SendSetPacket(2, on);
 }
 
 bool Relay4Port::Get_Relay3()
@@ -56,7 +58,8 @@ bool Relay4Port::Get_Relay3()
 void Relay4Port::Set_Relay3(bool on)
 {
 	relay3 = on;
-	digitalWrite(RELAY3_PIN, (on)?LOW:HIGH);
+	WritePin(RELAY3_PIN, on);
+	SendSetPacket(3, on);
 }
 
 bool Relay4Port::Get_Relay4()
@@ -67,7 +70,8 @@ bool Relay4Port::Get_Relay4()
 void Relay4Port::Set_Relay4(bool on)
 {
 	relay4 = on;
-	digitalWrite(RELAY4_PIN, (on)?LOW:HIGH);
+	WritePin(RELAY4_PIN, on);
+	SendSetPacket(4, on);
 }
 
 void Relay4Port::OnCommandReceived(CommandArgs* args)
@@ -103,19 +107,23 @@ void Relay4Port::OnCommandReceived(CommandArgs* args)
 				switch(relay)
 				{
 				case 1:
-					Set_Relay1(onOff == 1);
+					relay1 = onOff == 1;
+					WritePin(RELAY1_PIN, relay1);
 					break;
 
 				case 2:
-					Set_Relay2(onOff == 1);
+					relay2 = onOff == 1;
+					WritePin(RELAY2_PIN, relay2);
 					break;
 
 				case 3:
-					Set_Relay3(onOff == 1);
+					relay3 = onOff == 1;
+					WritePin(RELAY3_PIN, relay3);
 					break;
 
 				case 4:
-					Set_Relay4(onOff == 1);
+					relay4 = onOff == 1;
+					WritePin(RELAY4_PIN, relay4);
 					break;
 
 				default:
@@ -132,4 +140,21 @@ void Relay4Port::SendCommand(CommandArgs* args)
 	{
 		this->sender->SendCommand(args);
 	}
+}
+
+void Relay4Port::WritePin(byte pin, bool onOff)
+{
+	digitalWrite(pin, (onOff)?LOW:HIGH);
+}
+
+void Relay4Port::SendSetPacket(byte number, bool onOff)
+{
+	CommandArgs args;
+	args.Set_Type(Set);
+	args.Set_Command(RelayCommand);
+	byte value[1];
+	value[0] = (number << 4) | onOff;
+	args.Set_Length(1);
+	args.Set_Value(value);
+	SendCommand(&args);
 }

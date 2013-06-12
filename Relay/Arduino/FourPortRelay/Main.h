@@ -7,6 +7,7 @@
 #include "Relay4Port.h"
 #include "RGBLed.h"
 #include "Processer.h"
+#include "Buttons4.h"
 
 using namespace Sannel::Relay::Command;
 
@@ -29,6 +30,7 @@ namespace Sannel
 			Relay4Port relay;
 			RGBLed led;
 			Processer processer;
+			Buttons4 buttons;
 		};
 	};
 };
