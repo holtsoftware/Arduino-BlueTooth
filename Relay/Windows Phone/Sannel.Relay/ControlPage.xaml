@@ -27,49 +27,69 @@
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
-		<StackPanel Grid.Row="1" Margin="12,0,12,0">
-			<Grid x:Name="RelayPanel" DataContext="{Binding Relay}">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition />
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
-				<TextBlock>Relay 1</TextBlock>
-				<Controls:ToggleSwitch Grid.Row="1" Grid.Column="0" IsChecked="{Binding Relay1, Mode=TwoWay}" />
-				<TextBlock Grid.Column="1" Grid.Row="0">Relay 2</TextBlock>
-				<Controls:ToggleSwitch Grid.Column="1" Grid.Row="1" IsChecked="{Binding Relay2, Mode=TwoWay}" />
-				<TextBlock Grid.Row="2" Grid.Column="0">Relay 3</TextBlock>
-				<Controls:ToggleSwitch Grid.Row="3" Grid.Column="0" IsChecked="{Binding Relay3, Mode=TwoWay}" />
-				<TextBlock Grid.Row="2" Grid.Column="1">Relay 4</TextBlock>
-				<Controls:ToggleSwitch Grid.Row="3" Grid.Column="1" IsChecked="{Binding Relay4, Mode=TwoWay}" />
-			</Grid>
-			<Grid x:Name="LedPanel" DataContext="{Binding RGBLed}">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition />
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
-				<TextBlock>Red</TextBlock>
-				<Slider Grid.Row="1" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Red, Mode=TwoWay}" />
-				<TextBlock Grid.Row="2">Green</TextBlock>
-				<Slider Grid.Row="3" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Green, Mode=TwoWay}" />
-				<TextBlock Grid.Row="4">Blue</TextBlock>
-				<Slider Grid.Row="5" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Blue, Mode=TwoWay}" />
-			</Grid>
-		</StackPanel>
+		<ScrollViewer Grid.Row="1">
+			<StackPanel Grid.Row="1" Margin="12,0,12,0">
+				<Grid x:Name="RelayPanel" DataContext="{Binding Relay}">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<TextBlock>Relay 1</TextBlock>
+					<Controls:ToggleSwitch Grid.Row="1" Grid.Column="0" IsChecked="{Binding Relay1, Mode=TwoWay}" />
+					<TextBlock Grid.Column="1" Grid.Row="0">Relay 2</TextBlock>
+					<Controls:ToggleSwitch Grid.Column="1" Grid.Row="1" IsChecked="{Binding Relay2, Mode=TwoWay}" />
+					<TextBlock Grid.Row="2" Grid.Column="0">Relay 3</TextBlock>
+					<Controls:ToggleSwitch Grid.Row="3" Grid.Column="0" IsChecked="{Binding Relay3, Mode=TwoWay}" />
+					<TextBlock Grid.Row="2" Grid.Column="1">Relay 4</TextBlock>
+					<Controls:ToggleSwitch Grid.Row="3" Grid.Column="1" IsChecked="{Binding Relay4, Mode=TwoWay}" />
+				</Grid>
+				<TextBlock>Color</TextBlock>
+				<Controls:ListPicker x:Name="ColorsInput" SelectionChanged="ColorsInput_SelectionChanged">
+					<Controls:ListPicker.FullModeItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Name}" />
+						</DataTemplate>
+					</Controls:ListPicker.FullModeItemTemplate>
+					<Controls:ListPicker.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Name}" />
+						</DataTemplate>
+					</Controls:ListPicker.ItemTemplate>
+				</Controls:ListPicker>
+				<Grid x:Name="LedPanel" DataContext="{Binding RGBLed}">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<TextBlock>Red</TextBlock>
+					<Slider Grid.Row="1" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Red}" />
+					<TextBlock Grid.Row="2">Green</TextBlock>
+					<Slider Grid.Row="3" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Green}" />
+					<TextBlock Grid.Row="4">Blue</TextBlock>
+					<Slider Grid.Row="5" Grid.ColumnSpan="2" Minimum="0" Maximum="255" Value="{Binding Blue}" />
+				</Grid>
+			</StackPanel>
+		</ScrollViewer>
 
 	</Grid>
+	<phone:PhoneApplicationPage.ApplicationBar>
+		<shell:ApplicationBar IsVisible="True">
+			<shell:ApplicationBarIconButton IconUri="/Assets/appbar.microphone.png" Text="speech" Click="Speech_Click" />
+		</shell:ApplicationBar>
+	</phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>
